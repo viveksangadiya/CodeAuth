@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="row">
+    <div class="col-xs-12">
+
+        <form #userLogin="ngForm" (ngSubmit)="onLogin()">
+            <div class="form-group">
+                <label>Email :</label>
+                <input type="email" id="email" class="form-control" [(ngModel)]="loginUserData.email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label>Password :</label>
+                <input type="password" id="password" class="form-control" [(ngModel)]="loginUserData.password" name="password">
+            </div>
+
+            <button class="btn btn-primary" type="submit">Login</button>
+
+        </form>
+    </div>
+</div>

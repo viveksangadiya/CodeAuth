@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-register',
@@ -12,11 +13,15 @@ export class RegisterComponent {
     email:'',
     password:''
   }
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService,private router:Router){}
   onRegister(){
     
     this.authService.registerUser(this.registerUserData).subscribe(
-      res => {console.log(res);},
+      res=>{
+        localStorage.setItem('token',res.token)
+        console.log(res)
+        this.router.navigate(['/special-events'])
+      },
       err=>{console.log(err);}
     );
     

@@ -13,4 +13,7 @@ export class AuthService {
      return this.http.post<any>("http://localhost:3000/api/register",user)
   }
   
+  loginUser(user: any){
+    return this.http.post<any>("http://localhost:3000/api/login",user)
+ }
 }
