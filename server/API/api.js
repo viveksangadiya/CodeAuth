@@ -29,11 +29,11 @@ mongoose.connect(db, err => {
 router.post('/register', (req, res) => {
     let userData = req.body;
     let user = new User(userData);
-    user.save((error, responseDate) => {
+    user.save((error, responseData) => {
         if (error) {
             console.log(error)
         } else {
-            let payload = { subject: responseDate._id }
+            let payload = { subject: responseData._id }
             let token = jwt.sign(payload, 'secret key')
             res.status(200).send({ token });
         }
@@ -96,7 +96,7 @@ router.get('/events', (req, res) => {
     res.json(events)
 })
 
-router.get('/special-events', (req, res) => {
+router.get('/special-events',(req, res) => {
     let events = [{
             "id": "1",
             "name": "auto",
